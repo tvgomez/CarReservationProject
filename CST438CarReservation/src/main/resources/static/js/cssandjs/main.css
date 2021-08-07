@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+
+h1{
+	font-family: "din-2014",Arial,sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+   
+   
+}
+h2{
+	font-family: "din-2014",Arial,sans-serif;
+    font-size: 1.25em;
+}
+h3,h4 {
+    font-family: "din-2014",Arial,sans-serif;
+	font-size: 0.75em;
+    
+}
+option{
+	 font-family: georgia;
+}
+form{
+	font-family: "din-2014",Arial,sans-serif;
+	
+}
+tr,th{
+	font-family: "din-2014",Arial,sans-serif;
+    font-size: 1.0em;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0 15px;
+}
+td {
+  width: 150px;
+  font-family: "din-2014",Arial,sans-serif;
+  text-align: center;
+  border: 1px solid black;
+  padding: 5px;
+}

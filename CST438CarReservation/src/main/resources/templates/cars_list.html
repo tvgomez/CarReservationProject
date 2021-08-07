@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html  xmlns:th = "wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Car List</title>
+<link th:href="@{/js/cssandjs/main.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<h2> Test display all cars</h2>
+	<br/>
+	<table>
+		<tr>
+			<th> Car model</th>
+			<th> Car make</th>
+			<th> Car year</th>
+		</tr>
+		<tr th:each="car :${car}">
+			<td th:text = "${car.model}"></td>
+			<td th:text = "${car.make}"></td>
+			<td th:text = "${car.year}"></td>
+		</tr>
+	
+	</table>
+</body>
+</html>

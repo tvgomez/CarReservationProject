@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  xmlns:th = "wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cars Info Five</title>
+<link th:href="@{/js/cssandjs/main.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script type = "text/javascript" th:src ="@{/js/cssandjs/actions.js}"></script>
+</head>
+<body>
+	<h2> Test display 5 Random Cars</h2>
+	<br/>
+	<table id ="carTable">
+		<tr>
+			<th> Car model</th>
+			<th> Car make</th>
+			<th> Car year</th>
+			<th>Rental Price<button th:onclick = "sortByModel()">Sort By Price</button></th>
+		</tr>
+		<tr th:each="car :${car}">
+			<td style="display:none;" th:name = "id" th:text="${car.id}"></td>
+			<td ><a th:href ="@{'/randomFiveCars/' + ${car.id}}" target= "_blank" th:name = "model" th:text = "${car.model}"/></a></td>
+			<td th:text = "${car.make}" th:name = "make" ></td>
+			<td th:text = "${car.year}" th:name = "year"></td>
+			<td th:text = "${car.rentalPrice}" th:name = "rentalPrice"></td>
+		</tr>
+	
+	</table>
+</body>
+</html>

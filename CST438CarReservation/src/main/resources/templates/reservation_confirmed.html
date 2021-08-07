@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th= "www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Reservation Confirmed</title>
+<link th:href="@{/js/cssandjs/main.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<h2> Reservation Confirmed</h2>
+<h3>Save this information:</h3>
+<h4 th:inline = "text">Reservation ID: [[${reservation.id}]]</h4>
+<h4 th:inline = "text">Reservation Username: [[${reservation.email}]]</h4>
+
+<form th:action="@{/carrental}">
+    <input type="submit" value="Go Home" />
+</form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html  xmlns:th = "wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cars Checkout</title>
+<link th:href="@{/js/cssandjs/main.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<h2> Here's your Reservation Details</h2>
+	<h3>This is not your reciept yet</h3>
+	<br/>
+	<h4>Your selected Car details:</h4>
+	<table id = "carDetails">
+		<tr>
+			<th>Car model</th>
+			<th>Car make</th>
+			<th>Car year</th>
+			<th>Trany</th>
+			<th>City Mileage Per Gallon</th>
+			<th>Highway Mileage Per Gallon</th>
+			<th>Car Class</th>
+			<th>Fuel Type</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Preview</th>
+		</tr>
+		<tr th:each="car :${car}">
+			<td style="display:none;" th:name = "id" th:text="${car.id}"></td>
+			<td th:text = "${car.model}"></td>
+			<td th:text = "${car.make}" th:name = "make" ></td>
+			<td th:text = "${car.year}" th:name = "year"></td>
+			<td th:text = "${car.trany}" th:name = "trany"></td>
+			<td th:text = "${car.cityMPG}" th:name = "cityMPG"></td>
+			<td th:text = "${car.highwayMPG}" th:name = "highwayMPG"></td>
+			<td th:text = "${car.carClass}" th:name = "carClass"></td>
+			<td th:text = "${car.fuelType}" th:name = "fuelType"></td>
+			<td th:text = "${car.city}" th:name = "city"></td>
+			<td th:text = "${car.state}" th:name = "state"></td>
+			<td ><img th:src="@{'/images/' +${car.image}}"> </td>
+		</tr>
+	</table>
+	<table id = "checkout">
+		<tr>
+			<th>SubTotal:</th>
+			<td th:text = "${car.rentalPrice}" th:name = "rentalPrice"></td>
+		</tr>
+		<tr>
+			<th>County Tax (%2)</th>
+			<td th:text = "${car.countyTax}" th:name = countyTaxTotal></td>
+		<tr>
+			<th>Gov Fee (%1)</th>
+			<td th:text = "${car.govFee}" th:name = govFeeTotal></td>
+		</tr>
+		<tr>
+			<th>Sales Tax (%9)</th>
+			<td th:text = "${car.salesTax}" th:name = salesTaxTotal></td>
+		</tr>
+		<tr>
+			<th>Total</th>
+			<td th:text = "${car.total}" th:name = total></td>
+		</tr>
+	</table>
+	<form action = "#" th:action = "@{/carrental/carsByCity/reserved/checkout}" th:object = "${reservation}" method = "post">
+	
+		<input  type="hidden" th:name = "car_id" th:value="${car.id}">
+		<input type="hidden" th:name = "date_start" th:value="${reservation.date_start}">
+		<input type = "hidden" th:name="date_end" th:value ="${reservation.date_end}">
+		Username: <input type = "text" th:field="*{email}" />
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+		<input type = "submit" value="Checkout" />	
+	</form>
+	<script th:inline="javascript">
+/*<![CDATA[*/
+
+    var message = /*[[${reservation.date_start}]]*/ 'default';
+    console.log(message);
+
+/*]]>*/
+</script>
+</body>
+</html>

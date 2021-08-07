@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html  xmlns:th = "wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>CarRental</title>
+<link th:href="@{/js/cssandjs/main.css}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<h1> Welcome to Car Rental!</h1>
+	<h2>Please make a selection for your destination!</h2>
+	<br/>
+	<form action ="#" th:action="@{/carrental/carsByCity}" th:object="${car}" method = "post">
+		<label for="start">Start date:</label>
+		<input type="date" th:id="start" th:name="start"  th:value="2021-01-01" min="2021-01-01" max="2021-12-31">
+		<input type="date" th:id="end" th:name="end"  th:value="2021-01-01" min="2021-01-01" max="2021-12-31">
+		  <select th:id="city" th:name="cars" th:field = "*{city}">
+		    <option value="New York">New York, NY</option>
+		    <option value="Los Angeles">Los Angeles, LA</option>
+		    <option value="Chicago">Chicago, IL</option>
+		    <option value="Huston">Huston, TX</option>
+		    <option value="Phoenix">Phoenix, AZ</option>
+		    <option value="Philadelphia">Philadelphia, PA</option>
+		    <option value="San Antonio">San Antonio, TX</option>
+		    <option value="San Diego">San Diego, CA</option>
+		    <option value="Dallas">Dallas, TX</option>
+		    <option value="San Jose">San Jose, CA</option>
+	  	</select>
+	  	<input type="submit">
+	</form>
+	<br/>
+	<h2>To check your current reservation input your username and reservation number</h2>
+	<form action = "#" th:action = "@{/carrental/checkReservation}" th:object = "${reservation}" method = "post">
+		Username: <input type = "text" th:field="*{email}" />
+			<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+		Reservation #: <input type = "text" th:field="*{id}" />
+			<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+		<input type = "submit" value="Check Status" />	
+	</form>
+</body>
+</html>
